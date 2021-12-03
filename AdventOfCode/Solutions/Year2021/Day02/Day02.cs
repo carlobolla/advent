@@ -6,7 +6,7 @@ namespace AdventOfCode.Solutions.Year2021
 {
     class Day02 : ASolution
     {
-        string[] lines;
+        readonly string[] lines;
         public Day02() : base(02, 2021, "")
         {
             lines = Input.SplitByNewline();
