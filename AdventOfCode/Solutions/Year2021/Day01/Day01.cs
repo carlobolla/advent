@@ -18,7 +18,7 @@ namespace AdventOfCode.Solutions.Year2021
 
         protected override string SolvePartTwo()
         {
-            return lines.Select((s, i) => new { i, s }).Where(t => t.i +4 <= linesArr.Count() && linesArr[t.i..(t.i+3)].Sum() < linesArr[(t.i+1)..(t.i + 4)].Sum()).Count().ToString();
+            return lines.Select((s, i) => new { i, s }).Where(t => t.i +4 <= lines.Count() && lines[t.i..(t.i+3)].Sum() < lines[(t.i+1)..(t.i + 4)].Sum()).Count().ToString();
         }
     }
 }

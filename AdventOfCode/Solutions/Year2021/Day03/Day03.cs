@@ -15,42 +15,31 @@ namespace AdventOfCode.Solutions.Year2021
         protected override string SolvePartOne()
         {
             char[] most_common = new char[12];
-            char[] least_common = new char[12];
             foreach(int i in Enumerable.Range(0,12))
             {
                 most_common[i] = lines.Count(bit => bit[i] == '0') > lines.Length / 2 ? '0' : '1';
-                least_common[i] = lines.Count(bit => bit[i] == '0') < lines.Length / 2 ? '0' : '1';
             }
-            uint gamma = Convert.ToUInt32(new string(most_common), 2);
-            uint epsilon = Convert.ToUInt32(new string(least_common), 2); ;
-
+            uint gamma = Convert.ToUInt16(new string(most_common), 2);
+            uint epsilon = gamma ^ 0b0000111111111111; //flip only 12 bits by XOR-ing with a mask
             return (gamma*epsilon).ToString();
         }
 
         protected override string SolvePartTwo()
         {
-            int oxy_gen_rating(string[] lines)
+            string[] oxyValues = lines.Where(x => x[0] == (lines.Count(bit => bit[0] == '0') > lines.Length / 2 ? '0' : '1')).ToArray();
+            string[] co2Values = lines.Where(x => !oxyValues.Contains(x)).ToArray();
+            foreach (int i in Enumerable.Range(0, 10))
             {
-                foreach (int i in Enumerable.Range(0, 12))
+                if (oxyValues.Length != 1)
                 {
-                    lines = lines.Where(x => x[i] == (lines.Count(bit => bit[i] == '0') > lines.Length / 2 ? '0' : '1')).ToArray();
-                    if (lines.Length == 1)
-                        return Convert.ToInt32(lines[0], 2);
+                    oxyValues = oxyValues.Where(x => x[i + 1] == (oxyValues.Count(bit => bit[i+1] == '0') > oxyValues.Length / 2 ? '0' : '1')).ToArray();
                 }
-                return 0;
-            }
-            int co2_scrub_rating(string[] lines)
-            {
-                foreach (int i in Enumerable.Range(0, 12))
+                if (co2Values.Length != 1)
                 {
-                    lines = lines.Where(x => x[i] == (lines.Count(bit => bit[i] == '0') <= lines.Length / 2 ? '0' : '1')).ToArray();
-                    if (lines.Length == 1)
-                        return Convert.ToInt32(lines[0], 2);
+                    co2Values = co2Values.Where(x => x[i+1] == (co2Values.Count(bit => bit[i+1] == '0') <= co2Values.Length / 2 ? '0' : '1')).ToArray();
                 }
-                return 0;
             }
-
-            return (oxy_gen_rating(lines) * co2_scrub_rating(lines)).ToString();
+            return (Convert.ToInt32(oxyValues[0], 2) * Convert.ToInt32(co2Values[0], 2)).ToString();
         }
     }
 }
