@@ -72,7 +72,8 @@ namespace AdventOfCode.Solutions
             {
                 if (Debugger.IsAttached)
                 {
-                    throw;
+                    Debugger.Break();
+                    return SolutionResult.Empty;
                 }
                 else
                 {
