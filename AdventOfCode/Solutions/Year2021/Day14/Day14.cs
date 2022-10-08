@@ -10,7 +10,7 @@ internal class Day14 : ASolution
 {
     private readonly string _polymer;
     private readonly Dictionary<string, string> _rules = new();
-    public Day14() : base(14, 2021, "")
+    public Day14() : base(14, 2021, "Extended Polymerization")
     {
         string[] lines = Input.SplitByNewline();
         _polymer = lines[0];

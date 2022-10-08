@@ -7,7 +7,7 @@ namespace AdventOfCode.Solutions.Year2021;
 internal class Day07 : ASolution
 {
     private readonly int[] _subs;
-    public Day07() : base(07, 2021, "")
+    public Day07() : base(07, 2021, "The Treachery of Whales")
     {
         _subs = Input.SplitByNewline()[0].Split(",").Select(i => int.Parse(i)).ToArray();
     }

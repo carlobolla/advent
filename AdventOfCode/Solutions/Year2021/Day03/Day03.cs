@@ -7,7 +7,7 @@ namespace AdventOfCode.Solutions.Year2021;
 internal class Day03 : ASolution
 {
     private readonly string[] _lines;
-    public Day03() : base(03, 2021, "")
+    public Day03() : base(03, 2021, "Binary Diagnostic")
     {
         _lines = Input.SplitByNewline();
     }

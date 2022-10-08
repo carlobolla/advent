@@ -16,7 +16,7 @@ internal class Day06 : ASolution
             feeshByDays[(d + 7) % 9] += feeshByDays[d % 9];
         }
     }
-    public Day06() : base(06, 2021, "")
+    public Day06() : base(06, 2021, "Lanternfish")
     {
         _lines = Input.SplitByNewline();
     }

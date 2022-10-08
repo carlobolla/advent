@@ -8,7 +8,7 @@ namespace AdventOfCode.Solutions.Year2021;
 internal class Day10 : ASolution
 {
     private readonly string[] _lines;
-    public Day10() : base(10, 2021, "")
+    public Day10() : base(10, 2021, "Syntax Scoring")
     {
         _lines = Input.SplitByNewline();
     }

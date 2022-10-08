@@ -11,7 +11,7 @@ internal class Day04 : ASolution
     private readonly string[] _lines;
     private readonly int[] _extracts;
     private readonly List<int[][]> _boards;
-    public Day04() : base(04, 2021, "")
+    public Day04() : base(04, 2021, "Giant Squid")
     {
         _lines = Input.SplitByNewline().Where(line => line != "").ToArray();
         _extracts = _lines[0].Split(',').Select(x=>Convert.ToInt32(x)).ToArray();

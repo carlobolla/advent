@@ -7,7 +7,7 @@ namespace AdventOfCode.Solutions.Year2021;
 internal class Day11 : ASolution
 {
     private readonly string[] _lines;
-    public Day11() : base(11, 2021, "")
+    public Day11() : base(11, 2021, "Dumbo Octopus")
     {
         _lines = Input.SplitByNewline();
     }

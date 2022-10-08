@@ -7,7 +7,7 @@ namespace AdventOfCode.Solutions.Year2021;
 internal class Day12 : ASolution
 {
     private readonly string[] _lines;
-    public Day12() : base(12, 2021, "")
+    public Day12() : base(12, 2021, "Passage Pathing")
     {
         _lines = Input.SplitByNewline();
     }

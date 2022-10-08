@@ -8,7 +8,7 @@ internal class Day16 : ASolution
 {
     private readonly Queue<char> _binaryCode;
     private Packet _mainPacket;
-    public Day16() : base(16, 2021, "")
+    public Day16() : base(16, 2021, "Packet Decoder")
     {
         _binaryCode = new Queue<char>(Input.Aggregate("",
             (current, c) => current + Convert.ToString(Convert.ToInt32(c.ToString(), 16), 2).PadLeft(4, '0')));

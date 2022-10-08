@@ -8,7 +8,7 @@ internal class Day05 : ASolution
 {
     private readonly string[] _lines;
     private readonly List<Pipe> _pipes = new();
-    public Day05() : base(05, 2021, "")
+    public Day05() : base(05, 2021, "Hydrothermal Venture")
     {
         _lines = Input.SplitByNewline();
         foreach(string line in _lines)

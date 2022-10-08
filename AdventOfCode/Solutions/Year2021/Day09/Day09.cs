@@ -9,7 +9,7 @@ internal class Day09 : ASolution
 {
     private readonly string[] _lines;
     private readonly List<Point> _lowPoints;
-    public Day09() : base(09, 2021, "")
+    public Day09() : base(09, 2021, "Smoke Basin")
     {
         _lines = Input.SplitByNewline();
         _lowPoints = new List<Point>();

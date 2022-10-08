@@ -5,7 +5,7 @@ namespace AdventOfCode.Solutions.Year2021;
 internal class Day01 : ASolution
 {
     private readonly int[] _lines;
-    public Day01() : base(01, 2021, "")
+    public Day01() : base(01, 2021, "Sonar Sweep")
     {
         _lines = Input.SplitByNewline().ToIntArray();
     }

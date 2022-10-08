@@ -7,8 +7,7 @@ namespace AdventOfCode.Solutions.Year2021
 
     class Day15 : ASolution
     {
-        Dictionary<Point, int> grid = new();
-        public Day15() : base(15, 2021, "")
+        public Day15() : base(15, 2021, "Chiton")
         {}
 
         protected override string SolvePartOne()
