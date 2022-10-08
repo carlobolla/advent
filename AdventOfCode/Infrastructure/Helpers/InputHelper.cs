@@ -5,32 +5,33 @@ using System.Net.Http;
 using AdventOfCode.Infrastructure.Models;
 
 namespace AdventOfCode.Infrastructure.Helpers;
-static class InputHelper
+
+internal static class InputHelper
 {
-    readonly static string cookie = Config.Get("config.json").Cookie;
+    private readonly static string Cookie = Config.Get("config.json").Cookie;
 
     public static string LoadInput(int day, int year)
     {
-        string INPUT_FILEPATH = GetDayPath(day, year) + "/input";
-        string INPUT_URL = GetAocInputUrl(day, year);
+        string inputFilepath = GetDayPath(day, year) + "/input";
+        string inputUrl = GetAocInputUrl(day, year);
         string input = "";
 
-        if (File.Exists(INPUT_FILEPATH) && new FileInfo(INPUT_FILEPATH).Length > 0)
+        if (File.Exists(inputFilepath) && new FileInfo(inputFilepath).Length > 0)
         {
-            input = File.ReadAllText(INPUT_FILEPATH);
+            input = File.ReadAllText(inputFilepath);
         }
         else
         {
             try
             {
-                DateTime CURRENT_EST = TimeZoneInfo.ConvertTime(DateTime.Now, TimeZoneInfo.Utc).AddHours(-5);
-                if (CURRENT_EST < new DateTime(year, 12, day)) throw new InvalidOperationException();
+                DateTime currentEst = TimeZoneInfo.ConvertTime(DateTime.Now, TimeZoneInfo.Utc).AddHours(-5);
+                if (currentEst < new DateTime(year, 12, day)) throw new InvalidOperationException();
 
                 using (var client = new HttpClient(new HttpClientHandler { UseCookies = false }))
                 {
-                    client.DefaultRequestHeaders.Add("Cookie", cookie);
-                    input = client.GetStringAsync(INPUT_URL).Result.Trim();
-                    File.WriteAllText(INPUT_FILEPATH, input);
+                    client.DefaultRequestHeaders.Add("Cookie", Cookie);
+                    input = client.GetStringAsync(inputUrl).Result.Trim();
+                    File.WriteAllText(inputFilepath, input);
                 }
             }
             catch (HttpRequestException e)
@@ -67,15 +68,15 @@ static class InputHelper
 
     public static string LoadDebugInput(int day, int year)
     {
-        string INPUT_FILEPATH = GetDayPath(day, year) + "/debug";
-        return (File.Exists(INPUT_FILEPATH) && new FileInfo(INPUT_FILEPATH).Length > 0)
-            ? File.ReadAllText(INPUT_FILEPATH)
+        string inputFilepath = GetDayPath(day, year) + "/debug";
+        return (File.Exists(inputFilepath) && new FileInfo(inputFilepath).Length > 0)
+            ? File.ReadAllText(inputFilepath)
             : "";
     }
 
-    static string GetDayPath(int day, int year)
+    private static string GetDayPath(int day, int year)
         => Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, $"../../../Solutions/Year{year}/Day{day.ToString("D2")}"));
 
-    static string GetAocInputUrl(int day, int year)
+    private static string GetAocInputUrl(int day, int year)
         => $"https://adventofcode.com/{year}/day/{day}/input";
 }

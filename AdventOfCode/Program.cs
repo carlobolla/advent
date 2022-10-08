@@ -3,19 +3,18 @@ using AdventOfCode.Infrastructure;
 using AdventOfCode.Infrastructure.Helpers;
 using AdventOfCode.Solutions;
 
-namespace AdventOfCode
-{
-    class Program
-    {
-        static SolutionCollector Solutions = new SolutionCollector();
+namespace AdventOfCode;
 
-        static void Main(string[] args)
+internal class Program
+{
+    private static readonly SolutionCollector _solutions = new SolutionCollector();
+
+    private static void Main(string[] args)
+    {
+        foreach (ASolution solution in _solutions)
         {
-            foreach (ASolution solution in Solutions)
-            {
-                Console.WriteLine();
-                Console.WriteLine(FormatHelper.FunctionFormat(solution));
-            }
+            Console.WriteLine();
+            Console.WriteLine(FormatHelper.FunctionFormat(solution));
         }
     }
 }

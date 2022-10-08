@@ -1,7 +1,7 @@
 using AdventOfCode.Infrastructure.Models;
 using AdventOfCode.Solutions;
 
-static class FormatHelper
+internal static class FormatHelper
 {
     public static string SimpleFormat(ASolution solution)
         => $"--- {FormatTitle(solution.Day, solution.Title)} --- \n"
