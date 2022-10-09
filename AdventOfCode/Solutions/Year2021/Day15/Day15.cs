@@ -1,10 +1,8 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace AdventOfCode.Solutions.Year2021;
-
-class Day15 : ASolution
+internal class Day15 : ASolution
 {
     public Day15() : base(15, 2021, "Chiton")
     {}
