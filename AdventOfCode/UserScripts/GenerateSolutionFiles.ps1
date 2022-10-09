@@ -3,30 +3,25 @@
 )
 
 $template = @"
-using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace AdventOfCode.Solutions.Year<YEAR>
+namespace AdventOfCode.Solutions.Year<YEAR>;
+
+internal class Day<DAY> : ASolution
 {
 
-    class Day<DAY> : ASolution
+    public Day<DAY>() : base(<DAY>, <YEAR>, `"`")
     {
 
-        public Day<DAY>() : base(<DAY>, <YEAR>, `"`")
-        {
+    }
 
-        }
+    protected override string SolvePartOne()
+    {
+        return null;
+    }
 
-        protected override string SolvePartOne()
-        {
-            return null;
-        }
-
-        protected override string SolvePartTwo()
-        {
-            return null;
-        }
+    protected override string SolvePartTwo()
+    {
+        return null;
     }
 }
 
