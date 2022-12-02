@@ -9,14 +9,14 @@ namespace AdventOfCode.Infrastructure;
 
 internal class SolutionCollector : IEnumerable<ASolution>
 {
-    private readonly static Config Config = Config.Get("config.json");
+    private static readonly Config Config = Config.Get("config.json");
 
     private readonly IEnumerable<ASolution> _solutions;
 
     public SolutionCollector() => _solutions = LoadSolutions(Config.Year, Config.Days).ToArray();
     public SolutionCollector(int year, int[] days) => _solutions = LoadSolutions(year, days).ToArray();
 
-    public ASolution GetSolution(int day)
+    public ASolution? GetSolution(int day)
     {
         try
         {
@@ -44,7 +44,7 @@ internal class SolutionCollector : IEnumerable<ASolution>
             var solution = Type.GetType($"AdventOfCode.Solutions.Year{year}.Day{day.ToString("D2")}");
             if (solution != null)
             {
-                yield return (ASolution)Activator.CreateInstance(solution);
+                yield return (ASolution)Activator.CreateInstance(solution)!;
             }
         }
     }

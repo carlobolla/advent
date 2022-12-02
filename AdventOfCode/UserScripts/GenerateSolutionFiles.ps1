@@ -16,12 +16,12 @@ internal class Day<DAY> : ASolution
 
     protected override string SolvePartOne()
     {
-        return null;
+        return "";
     }
 
     protected override string SolvePartTwo()
     {
-        return null;
+        return "";
     }
 }
 

@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AdventOfCode.Solutions.Year2021;
 
@@ -11,26 +9,24 @@ public class Point{
     public int Y { get; private set; }
     public Point(int x, int y)
     {
-        this.X = x;
-        this.Y = y;
+        X = x;
+        Y = y;
     }
     public override string ToString()
     {
         return $"({this.X},{this.Y})";
     }
-    public override bool Equals(object obj)
+    public override bool Equals(object? obj)
     {
-        return Equals(obj as Point);
+        return Equals((Point)obj!);
     }
     public bool Equals(Point obj)
     {
-        if (obj.X == this.X && obj.Y == this.Y)
-            return true;
-        return false;
+        return obj.X == this.X && obj.Y == this.Y;
     }
     public override int GetHashCode()
     {
-        return this.X.GetHashCode() * 17 + this.Y.GetHashCode();
+        return HashCode.Combine(X, Y);
     }
 }
 public class Pipe
@@ -38,7 +34,7 @@ public class Pipe
     public Point StartingPoint { get; private set; }
     public Point EndingPoint { get; private set; }
     public List<Point> Path { get; private set; }
-    public bool Straight { get; private set; } = false;
+    public bool Straight { get; private set; }
     public Pipe(Point starting, Point ending)
     {
         StartingPoint = starting;
