@@ -107,6 +107,14 @@ public static class Utilities
             .Select(s => shouldTrim ? s.Trim() : s)
             .ToArray();
     }
+    
+    public static string[] SplitByNewlineKeepEmpty(this string input, bool shouldTrim = false)
+    {
+        return input
+            .Split(new[] { "\r", "\n", "\r\n" }, StringSplitOptions.None)
+            .Select(s => shouldTrim ? s.Trim() : s)
+            .ToArray();
+    }
 
     public static string Reverse(this string str)
     {

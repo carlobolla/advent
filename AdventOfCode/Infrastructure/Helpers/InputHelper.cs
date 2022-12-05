@@ -30,7 +30,7 @@ internal static class InputHelper
                 using (var client = new HttpClient(new HttpClientHandler { UseCookies = false }))
                 {
                     client.DefaultRequestHeaders.Add("Cookie", Cookie);
-                    input = client.GetStringAsync(inputUrl).Result.Trim();
+                    input = client.GetStringAsync(inputUrl).Result;
                     File.WriteAllText(inputFilepath, input);
                 }
             }
