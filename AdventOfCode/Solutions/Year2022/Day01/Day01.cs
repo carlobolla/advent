@@ -10,35 +10,23 @@ internal class Day01 : ASolution
     private readonly string[] _lines;
     public Day01() : base(01, 2022, "Calorie Counting")
     {
-        _lines = Input.Split(new []{ "\r", "\n", "\r\n" }, StringSplitOptions.None).ToArray();
+        _lines = Input.Split(new []{ "\n\n" }, StringSplitOptions.None).ToArray();
     }
 
-    private List<int> GetElves(string[] lines)
+    private static IEnumerable<int> GetElves(IEnumerable<string> lines)
     {
-        List<int> elves = new();
-        int elf = 0;
-        foreach (var line in lines)
-        {
-            if (line != "")
-                elf += int.Parse(line);
-            else
-            {
-                elves.Add(elf);
-                elf = 0;
-            }
-        }
-        return elves;
+        return lines.Select(elf => elf.SplitByNewline().Sum(int.Parse));
     }
 
     protected override string SolvePartOne()
     {
-        List<int> elves = GetElves(_lines);
+        var elves = GetElves(_lines);
         return elves.Max().ToString();
     }
 
     protected override string SolvePartTwo()
     {
-        List<int> elves = GetElves(_lines);
+        var elves = GetElves(_lines).ToList();
         elves.Sort((a, b) => b - a);
         return elves.Take(3).Sum().ToString();
     }
