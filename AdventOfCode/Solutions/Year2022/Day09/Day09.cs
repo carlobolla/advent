@@ -8,7 +8,7 @@ internal class Day09 : ASolution
 {
     private record Point(int X, int Y);
     private readonly string[] _lines; 
-    public Day09() : base(09, 2022, "")
+    public Day09() : base(09, 2022, "Rope Bridge")
     {
         _lines = Input.SplitByNewline();
     }
