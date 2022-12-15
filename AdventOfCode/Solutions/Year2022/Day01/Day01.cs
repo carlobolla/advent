@@ -27,7 +27,6 @@ internal class Day01 : ASolution
     protected override string SolvePartTwo()
     {
         var elves = GetElves(_lines).ToList();
-        elves.Sort((a, b) => b - a);
-        return elves.Take(3).Sum().ToString();
+        return elves.OrderByDescending(e => e).Take(3).Sum().ToString();
     }
 }
