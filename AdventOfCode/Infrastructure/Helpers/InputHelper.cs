@@ -8,7 +8,7 @@ namespace AdventOfCode.Infrastructure.Helpers;
 
 internal static class InputHelper
 {
-    private readonly static string Cookie = Config.Get("config.json").Cookie;
+    private static readonly string Cookie = Config.Get("config.json").Cookie;
 
     public static string LoadInput(int day, int year)
     {

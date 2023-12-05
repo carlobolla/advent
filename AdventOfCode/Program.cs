@@ -1,17 +1,17 @@
 ﻿using System;
+using System.Linq;
 using AdventOfCode.Infrastructure;
-using AdventOfCode.Infrastructure.Helpers;
-using AdventOfCode.Solutions;
 
 namespace AdventOfCode;
 
-internal class Program
+internal static class Program
 {
-    private static readonly SolutionCollector _solutions = new SolutionCollector();
-
     private static void Main(string[] args)
     {
-        foreach (ASolution solution in _solutions)
+        var solutions = args.Length == 0 ? new SolutionCollector() 
+            : new SolutionCollector(int.Parse(args[0]), args.Length > 1 
+            ? args[1].Split(',').Select(int.Parse).ToArray() : Array.Empty<int>());
+        foreach (var solution in solutions)
         {
             Console.WriteLine();
             Console.WriteLine(FormatHelper.FunctionFormat(solution));

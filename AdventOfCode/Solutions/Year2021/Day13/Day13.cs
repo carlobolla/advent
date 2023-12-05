@@ -8,17 +8,16 @@ namespace AdventOfCode.Solutions.Year2021;
 
 internal class Day13 : ASolution
 {
-    private readonly List<Tuple<int, int>> _dots;
     private readonly Grid _grid;
     private readonly List<string> _folds;
     public Day13() : base(13, 2021, "Transparent Origami")
     {
-        _dots = Input.SplitByNewline().Where(l => !l.StartsWith("fold") && l != "").Select(x => Tuple.Create<int, int>(int.Parse(x.Split(',')[0]), int.Parse(x.Split(',')[1]))).ToList();
-        _grid = new Grid(_dots);
+        List<Tuple<int, int>> dots = Input.SplitByNewline().Where(l => !l.StartsWith("fold") && l != "").Select(x => Tuple.Create<int, int>(int.Parse(x.Split(',')[0]), int.Parse(x.Split(',')[1]))).ToList();
+        _grid = new Grid(dots);
         _folds = Input.SplitByNewline().Where(l => l.StartsWith("fold")).Select(s => s.Replace("fold along ", "")).ToList();
     }
 
-    public class Grid{
+    private class Grid{
         public bool[,] grid;
         public Grid(List<Tuple<int, int>> dots)
         {
@@ -58,7 +57,7 @@ internal class Day13 : ASolution
             grid = tempGrid;
         }
 
-        override public string ToString()
+        public override string ToString()
         {
             string gridString = "\n";
             for(int row = 0; row < grid.GetLength(0); row++)
